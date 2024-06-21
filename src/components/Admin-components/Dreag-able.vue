@@ -15,6 +15,7 @@
           >{{ group[parentfield] }}</div>
           <draggable class="list-group w-full" :list="group.children" @change="log">
          
+            
             <div
               class="list-group-item text-sans bg-white border ml-4 mt-1 py-2 px-3  text-[13px]"
               v-for="element in group.children"
