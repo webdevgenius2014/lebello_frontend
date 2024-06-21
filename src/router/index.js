@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { isAuthenticated } from '@/helper/isAuthaticated'
-import store from '@/store';  // Import the Vuex store
+import store from '@/store';  
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,13 +59,13 @@ const router = createRouter({
           path: '/AdminDashboard',
           name: 'AdminDashboard',
           component: import('../views/forntend-views/ProductDetails.vue'),
-          meta: { requiresAuth: true } // Require authentication for admin dashboard
+          meta: { requiresAuth: true } 
         },
         {
           path: 'users',
           name: 'AdminUsers',
           component: import('../views/Auth/Admin-Login.vue'),
-          meta: { requiresAuth: true } // Require authentication for admin users page
+          meta: { requiresAuth: true } 
         },
         {
           path: 'products',
@@ -77,19 +77,15 @@ const router = createRouter({
     },
   ]
 })
-const username='admin'
-const password='password'
-router.beforeEach((to, from, next) => {
-  // Check if the route requires authentication and if the user is authenticated
-  const token = store;
-  console.log("token",token.getters.token)
-  if (to.meta.requiresAuth && !isAuthenticated(username,password )) {
-    // If not authenticated, redirect to login page
-    next('/admin');
-  } else {
-    // Continue to the route
-    next();
-  }
-});
+
+// router.beforeEach((to, from, next) => {
+//   const token = store.getters.token;
+//   console.log("token",token.getters.token)
+//   if (to.meta.requiresAuth && !isAuthenticated(process.env.USERNAME ,process.env.PASSWORD )) {
+//     next('/admin');
+//   } else {
+//     next();
+//   }
+// });
 
 export default router

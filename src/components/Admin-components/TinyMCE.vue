@@ -13,7 +13,7 @@ const content = ref('')
 <template>
   <main id="sample">
     <Editor
-      api-key="fowfxcasisk39tpnmykuzkpek6kmuj7hxeywh8hof0v1xm4z"
+      :api-key=process.env.TINY_MCE
       :init="{
         plugins: 'lists link image table code help wordcount'
       }"

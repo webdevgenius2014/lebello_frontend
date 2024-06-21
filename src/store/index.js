@@ -4,10 +4,10 @@ import Vuex from 'vuex';
 
 export default new Vuex.Store({
   state: {
-    token: localStorage.getItem('token') || 'token',
-    user: JSON.parse(localStorage.getItem('user')) || null, 
+    token: localStorage?.getItem('token') || 'token',
+    user:  {}, 
   },
-  getters: {
+   getters: {
     token: state => state.token,
     user: state => state.user,
   },
@@ -22,7 +22,7 @@ export default new Vuex.Store({
     },
     setUser(state, user) {
       state.user = user;
-      localStorage.setItem('user', JSON.stringify(user)); 
+      localStorage.setItem('user', JSON?.stringify(user)); 
     },
     clearUser(state) {
       state.user = null;

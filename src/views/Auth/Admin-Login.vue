@@ -4,8 +4,8 @@ import Checkbox from '@/components/Admin-components/Form-checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/components/Admin-components/InputError.vue';
 import InputLabel from '@/components/Admin-components/form-components/InputLabel.vue';
-import PrimaryButton from '@/components/Admin-components/PrimaryButton.vue';
-import TextInput from '@/components/Admin-components/TextInput.vue';
+import PrimaryButton from '@/components/Admin-components/Buttons/PrimaryButton.vue';
+import TextInput from '@/components/Admin-components/form-components/TextInput.vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 // import axios from '@/helper/axios';
@@ -33,8 +33,8 @@ const router = useRouter();
 
 const handleLogin = () => {
 
-  const token = 'example_token_from_server';
-   store.dispatch('login', { token, form }); // Dispatch login action with token and user data
+  const token = process.env.TOKEN
+   store.dispatch('login', {token , form }); // Dispatch login action with token and user data
   router.push('/'); // Navigate to home or another route
 };
 </script>
