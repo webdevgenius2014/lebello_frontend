@@ -4,7 +4,7 @@ import Checkbox from '@/components/Admin-components/Form-checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/components/Admin-components/InputError.vue';
 import InputLabel from '@/components/Admin-components/form-components/InputLabel.vue';
-import PrimaryButton from '@/components/Admin-components/PrimaryButton.vue';
+import PrimaryButton from '@/components/Admin-components/Buttons/PrimaryButton.vue';
 import TextInput from '@/components/Admin-components/TextInput.vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
