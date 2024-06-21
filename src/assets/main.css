@@ -1,3 +1,17 @@
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@font-face {
+    font-family: 'GraphikRegular';
+    src:  url('fonts/GraphikRegular.otf') format('opentype');
+    }
+@font-face {
+    font-family: 'GraphikLight';
+    src:  url('fonts/GraphikLight.otf') format('opentype');
+    }
+@font-face {
+    font-family: 'GraphikMedium';
+    src:  url('fonts/GraphikMedium.otf') format('opentype');
+    }
