@@ -214,5 +214,4 @@ const sortByDate = () => {
 </script>
 
 <style scoped>
-/* Add your custom styling here */
 </style>

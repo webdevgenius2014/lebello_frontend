@@ -1,31 +1,19 @@
 <script setup>
-import HeaderArea from "@/Components/Header/HeaderArea.vue";
-import SidebarArea from "@/Components/Sidebar/SidebarArea.vue";
+import HeaderArea from "@/components/Admin-components/Header/HeaderArea.vue";
+import SidebarArea from "@/components/Admin-components/Sidebar/SidebarArea.vue";
+import { RouterView } from 'vue-router'
+
 </script>
-
 <template>
-    <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden bg-[#f0f0f1]">
-        <!-- ===== Sidebar Start ===== -->
         <SidebarArea />
-        <!-- ===== Sidebar End ===== -->
-
-        <!-- ===== Content Area Start ===== -->
-        <div
-            class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
-        >
-            <!-- ===== Header Start ===== -->
+        <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
             <HeaderArea />
-            <!-- ===== Header End ===== -->
-
-            <!-- ===== Main Content Start ===== -->
             <main>
-                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 bg-[#f0f0f1]">
-                    <slot></slot>
+                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 bg-[#f0f0f1]">         
+                        <RouterView> </RouterView>                 
                 </div>
             </main>
-            <!-- ===== Main Content End ===== -->
         </div>
     </div>
-    <!-- ===== Page Wrapper End ===== -->
 </template>

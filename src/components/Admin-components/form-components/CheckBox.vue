@@ -6,8 +6,8 @@
       v-model="proxyChecked"
       class="rounded bg-white border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
     />
-    <span>{{ label }}</span>
-    <span v-if="flag">{{ flagText }}</span>
+    <span v-if="label" v-bind="$attrs">{{ label }}</span>
+    <!-- <span v-if="flag"  >{{ flagText }}</span> -->
   </label>
 </template>
 

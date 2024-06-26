@@ -1,5 +1,5 @@
 <template>
-    <div class="flex  text-[#555] text-sans">
+    <div class="text-[#555] text-sans">
       <transition-group type="transition" :name="'flip-list'">
       <draggable class="dragArea list-group w-full" v-model="localList"
       :component-data="{
@@ -57,12 +57,12 @@
   },
   data() {
       return {
-        localList: [], // Initialize localList
+        localList: [], 
       };
     },
     watch: {
       list(newValue) {
-        this.localList = [...newValue]; // Update localList when prop 'list' changes
+        this.localList = [...newValue]; 
       },
     },
     methods: {
@@ -74,12 +74,11 @@
       },
       dragEnd(event) {
         console.log('Drag end:', event);
-        // Emit updated array to parent component
         this.$emit('update:list', this.localList);
       },
     },
     mounted() {
-      this.localList = [...this.list]; // Initialize localList with a copy of 'list' prop on mount
+      this.localList = [...this.list]; 
     },
   });
   </script>

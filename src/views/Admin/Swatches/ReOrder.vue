@@ -1,5 +1,5 @@
 <template>
-  <AdminLayout>
+  <div>
     <div>
       <div class="text-[23px] mb-3 text-sans text-[#1d2327]">Material - Re-Order</div>
       <Dreagable v-model:list="list" @update:list="handleListUpdate" parentfield="name" Classes=" border-l-4 border-[#ccd0d4]">
@@ -8,12 +8,11 @@
         Update
       </Button>
     </div>
-  </AdminLayout>
+  </div>
 </template>
 <script setup>
 import { ref } from "vue";
-import Button from "@/Components/Buttons/Button.vue";
-import AdminLayout from "@/Layouts/AdminLayout.vue";
+import Button from "@/components/Admin-components/Buttons/Button.vue";
 import Dreagable from "@/components/Admin-components/Dreag-able.vue";
 
 const props = defineProps({

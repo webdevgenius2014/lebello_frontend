@@ -17,7 +17,7 @@
   <script setup>
 
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import LinkBtn from "@/Components/Buttons/LinkBtn.vue";
+// import LinkBtn from "@/Components/Admin-components/Buttons/LinkBtn.vue";
 
 import AddAndEdit from "./AddAndEdit.vue";
 import { ref, computed } from "vue";

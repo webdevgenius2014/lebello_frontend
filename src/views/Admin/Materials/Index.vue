@@ -2,7 +2,7 @@
   <Head>
     <title>Matireal</title>
   </Head>
-    <AdminLayout>
+    <div>
       <h1 class="mr-3 text-[23px] text-[#1d2327] mb-7">Materials</h1>
       <div class="grid grid-cols-12">
         <div class="col-span-4 ...">
@@ -91,17 +91,17 @@
                       <img width="80%" height="80%" :src="`/${row.featured_image}`" />
                     </div>
                     <div v-else class="flex flex-col items-start min-h-24 pt-2" >
-                      <img width="80%" height="80%" src="/materials/default.png" />
+                      <!-- <img width="80%" height="80%" src="@/public/materials/default.png" /> -->
                     </div>
                   </td>
                   <td class="text-textColor2" >
                     <div  class="flex flex-col items-start min-h-24 " >
                   {{ row.name }}
                     <p v-if="hoverd === rowIndex " class="text-[12px] text-textColor2">
-                        <a :href="route('edit.material', row.id)"> Edit</a>
+                        <router-link to="" href="route('edit.material', row.id)"> Edit</router-link>
                                 <span class="mx-1">|</span>
                                 <a class="text-[#b32d2e]" onclick="return confirm('Are you sure you want to delete?')"
-                                :href="route('delete.material', row.id)">Delete</a>
+                                href="route('delete.material', row.id)">Delete</a>
                             </p>
                   </div>
                   </td>
@@ -168,19 +168,21 @@
         </div>
       </div>
       
-    </AdminLayout>
+    </div>
   </template>
   
   <script setup>
 
-import AdminLayout from "@/Layouts/AdminLayout.vue";
-import LinkBtn from "@/Components/Buttons/LinkBtn.vue";
-import Button from "@/Components/Buttons/Button.vue";
-import Dropdown from "@/Components/form-components/Dropdown.vue";
-import TextInput from "@/Components/form-components/TextInput.vue";
+import LinkBtn from "@/components/Admin-components/Buttons/LinkBtn.vue";
+import Button from "@/components/Admin-components/Buttons/Button.vue";
+import Dropdown from "@/components/Admin-components/form-components/Dropdown.vue";
+import TextInput from "@/components/Admin-components/form-components/TextInput.vue";
 import AddAndEdit from "./AddAndEdit.vue";
-import { ref, computed } from "vue";
-import { Head, Link, useForm } from "@inertiajs/vue3";
+import { ref, computed ,watch } from "vue";
+
+// import { Head, Link, useForm } from "@inertiajs/vue3";
+
+
 
 const props = defineProps({
   materials: {

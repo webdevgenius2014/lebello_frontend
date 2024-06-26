@@ -1,5 +1,5 @@
 <template>
-  <AdminLayout>
+  <div>
   <div>
     <div class="text-[23px] text-sans text-[#3c434a]">Rearrange Postion of Right Navigation	    </div>
   <Dreagable v-model:list="list" @update:list="handleListUpdate" parentfield="navName"  Classes="mt-3 border-[#ccc]">
@@ -8,12 +8,11 @@
         Save
   </Button>
   </div>
-</AdminLayout>
+</div>
 </template>
 <script setup>
 import { ref } from 'vue';
-import Button from "@/Components/Buttons/Button.vue";
-import AdminLayout from "@/Layouts/AdminLayout.vue";
+import Button from "@/components/Admin-components/Buttons/Button.vue";
 import Dreagable from "@/components/Admin-components/Dreag-able.vue";
 const sortedData = ref([])
 // childField=""

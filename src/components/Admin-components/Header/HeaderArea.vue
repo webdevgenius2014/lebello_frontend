@@ -4,20 +4,54 @@
 // import DropdownMessage from './DropdownMessage.vue'
 // import DropdownNotification from './DropdownNotification.vue'
 // import DropdownUser from './DropdownUser.vue'
+import store from '@/store';
 
+import Dropdown from '@/components/Admin-components/Dropdown.vue';
+import DropdownLink from '@/components/Admin-components/DropdownLink.vue';
+import router from '@/router';
 // const { isSidebarOpen, toggleSidebar } = useSidebarStore()
+const logout = () => {
+  console.log("clicked is logged out")
+  store.dispatch('logout');
+  router.push('login')
+}
 </script>
-
+<!-- 1d2327 -->
 <template>
   <header
-    class="sticky top-0 z-999 flex w-full bg-primary drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none"
-  >
+    class="sticky top-0 bg-[#1d2327] z-[500] flex w-full bg-primary drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
+
+    <div class='absolute  top-0 right-0'>
+      <Dropdown width="48" align="right">
+        <template #trigger>
+          <span class="inline-flex rounded-md">
+            <button type="button"
+              class="flex items-center px-3 m-auto text-sm leading-4 font-medium  text-white bg-[#1d2327]  transition ease-in-out duration-150">
+              <!-- {{ $page.props.auth.user.name }} -->
+              <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </button>
+          </span>
+        </template>
+        <template #content>
+          <picture class="ml-4" >
+            profile
+          </picture>
+          <p class="ml-4 cursor-context-menu" @click="logout()">
+            Log Out
+          </p>
+        </template>
+      </Dropdown>
+    </div>
     <div class="flex flex-grow items-center justify-between py-4 px-4 shadow-2 md:px-6 2xl:px-11">
       <div class="flex items-center gap-2 sm:gap-4 lg:hidden">
         <!-- Hamburger Toggle BTN -->
         <button
-          class="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden"
-        >
+          class="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden">
           <span class="relative block h-5.5 w-5.5 cursor-pointer">
             <span class="du-block absolute right-0 h-full w-full">
               <!-- <span
@@ -47,7 +81,7 @@
         </button>
         <!-- Hamburger Toggle BTN -->
         <!-- <router-link class="block flex-shrink-0 lg:hidden" to="/"> -->
-          <!-- <img src="@/assets/images/logo/logo-icon.svg" alt="Logo" /> -->
+        <!-- <img src="@/assets/images/logo/logo-icon.svg" alt="Logo" /> -->
         <!-- </router-link> -->
       </div>
       <div class="hidden sm:block">
@@ -88,6 +122,7 @@
 
       <div class="flex items-center gap-3 2xsm:gap-7">
         <ul class="flex items-center gap-2 2xsm:gap-4">
+
           <li>
             <!-- Dark Mode Toggler -->
             <!-- <DarkModeSwitcher /> -->
@@ -107,6 +142,8 @@
         <!-- <DropdownUser /> -->
         <!-- User Area -->
       </div>
+
+
     </div>
   </header>
 </template>

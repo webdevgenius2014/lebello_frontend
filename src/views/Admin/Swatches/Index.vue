@@ -4,7 +4,7 @@
       <div class="flex mb-1">
         <h1 class="mr-3 text-[23px] text-[#1d2327]">Material Options</h1>
         <span>
-          <LinkBtn :click="route('add.swatches')" :buttonText="'Add New Swatches'" />
+          <LinkBtn click="route('add.swatches')" :buttonText="'Add New Swatches'" />
         </span>
       </div>
       <form>
@@ -147,7 +147,7 @@
                   <img width="70px" height="70px" :src="`/${row.featured_image}`" />
                 </div>
                 <div v-else class="flex flex-col items-start min-h-20 pt-2">
-                  <img width="70px" height="70px" src="/materials/default.png" />
+                  <img width="70px" height="70px" src="../../../../public/logo-header4.png" />
                 </div>
               </td>
             </tr>
@@ -248,12 +248,11 @@
 </template>
 
 <script setup>
-import LinkBtn from "@/Components/Buttons/LinkBtn.vue";
-import Button from "@/Components/Buttons/Button.vue";
-import Dropdown from "@/Components/form-components/Dropdown.vue";
-import TextInput from "@/Components/form-components/TextInput.vue";
-import AdminLayout from "@/Layouts/AdminLayout.vue";
-import TableComponent from "src/components/Admin-components/TableComponent.vue";
+// import LinkBtn from "@/Components/Admin-components/Buttons/LinkBtn.vue";
+import Button from "@/components/Admin-components/Buttons/Button.vue";
+import Dropdown from "@/components/Admin-components/form-components/Dropdown.vue";
+import TextInput from "@/components/Admin-components/form-components/TextInput.vue";
+// import TableComponent from "@/components/Admin-components/TableComponent.vue";
 import { ref, computed } from "vue";
 
 const username = ref("");
@@ -325,7 +324,7 @@ const HandleEdit = (data) => {
 };
 
 const filteredData = computed(() => {
-  return props.swatches
+  return tableData
     .filter((row) => {
       return (
         titleFilter.value === "" ||

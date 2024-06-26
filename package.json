@@ -14,6 +14,7 @@
     "@headlessui/vue": "^1.7.21",
     "@heroicons/vue": "^2.1.3",
     "@tinymce/tinymce-vue": "^6.0.1",
+    "@vee-validate/rules": "^4.13.1",
     "@vueuse/components": "^10.9.0",
     "@vueuse/core": "^10.9.0",
     "aos": "^2.3.4",
@@ -22,11 +23,14 @@
     "flowbite": "^2.3.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
+    "vee-validate": "^4.13.1",
     "vue": "^3.4.21",
+    "vue-multiselect": "^3.0.0",
     "vue-router": "^4.3.0",
     "vue3-google-map": "^0.20.0",
     "vue3-perfect-scrollbar": "^2.0.0",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",

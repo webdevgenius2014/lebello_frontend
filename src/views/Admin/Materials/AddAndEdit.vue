@@ -5,7 +5,7 @@
                 <div>
                     <InputLabel for="Name" value="Name" />
                     <TextInput id=" " type="text" class="block w-full mr-2 h-[33px] w-[80%] w-[80%]" v-model="form.name"
-                        placeholder="" label="" :message="form.errors.name" />
+                        placeholder="" label="" :message="errors?.name" />
                     <p class="text-sm text-[#646970] text-[11.5px]">
                         The name is how it appears on your site.
                     </p>
@@ -13,7 +13,7 @@
                 <div class="mt-3">
                     <InputLabel for="Slug" value="Slug" />
                     <TextInput id=" " type="text" class="block w-full mr-2 h-[33px] w-[80%]" v-model="form.slug"
-                        placeholder="" label="" :message="form.errors.slug" />
+                        placeholder="" label="" :message="errors?.slug" />
                     <p class="text-sm text-[#646970] text-[11.5px]">
                         The “slug” is the URL-friendly version of the name. It
                         is usually all lowercase and contains only letters,
@@ -58,12 +58,12 @@
                         Jazz, for example, would be the parent of Bebop and Big
                         Band.
                     </p>
-                    <InputError class="mt-2" :message="form.errors.parent_material" />
+                    <InputError class="mt-2" :message="errors?.parent_material" />
                 </div>
                 <div class="mt-3">
                     <InputLabel for="Description" value="Description" />
                     <TextInput id=" " isTextarea="true" rows="4" type="text" class="block w-[180px] mr-2 h-[33px]"
-                        v-model="form.description" placeholder="" label="" :message="form.errors.description"
+                        v-model="form.description" placeholder="" label="" :message="errors?.description"
                         autocomplete="current-description" />
                     <p class="text-sm text-[#646970] text-[11.5px]">
                         The description is not prominent by default; however,
@@ -74,12 +74,12 @@
                 <!-- <div class="mt-4">
                     <InputLabel for="Featured_image" value="Featured_image" />
                     <input id="featured_image" type="file" @input="form.featured_image = $event.target.files[0]" />
-                    <InputError class="mt-2" :message="form.errors.featured_image" />
+                    <InputError class="mt-2" :message="errors?.featured_image" />
                 </div> -->
                 <div class="mt-3">
                     <InputLabel for="Material Price" value="Material Price" />
                     <TextInput id=" " type="number" class="block w-full mr-2 h-[33px] w-[80%]"
-                        v-model="form.material_price" placeholder="" label="" :message="form.errors.material_price" />
+                        v-model="form.material_price" placeholder="" label="" :message="errors?.material_price" />
                     <p class="text-sm text-[#646970] text-[11.5px]">
                         The “slug” is the URL-friendly version of the name. It
                         is usually all lowercase and contains only letters,
@@ -89,18 +89,18 @@
                 <!-- <div class="mt-3">
                     <InputLabel for="Parent Material" value="Display in Material Options" />
                     <Dropdown :options="options" field='name' @optionSelected="handleOptionSelected" />
-                    <InputError class="mt-2" :message="form.errors.material_option" />
+                    <InputError class="mt-2" :message="errors?.material_option" />
                 </div>
                 <div class="mt-3">
                     <InputLabel for="Parent Material" value="Yellow Banner Display On Material Images" />
                     <Dropdown :options="options" field='name' @optionSelected="handleOptionSelected" />
-                    <InputError class="mt-2" :message="form.errors.yellow_banner" />
+                    <InputError class="mt-2" :message="errors?.yellow_banner" />
                 </div>
                 <div class="mt-3">
                     <InputLabel for="Parent Material" value="Show New Badge" />
                     
                     <Dropdown :options="options" field='name' @optionSelected="handleOptionSelected" />
-                    <InputError class="mt-2" :message="form.errors.new_badge" />
+                    <InputError class="mt-2" :message="errors?.new_badge" />
                 </div> -->
 
                 <div class="mt-3">
@@ -114,7 +114,7 @@
                         <option value="1">Yes</option>
                     </select> -->
 
-                    <InputError class="mt-2" :message="form.errors.material_option" />
+                    <InputError class="mt-2" :message="errors?.material_option" />
                 </div>
                 <div class="mt-3">
                     <InputLabel for="Yellow Banner Display On Material Images"
@@ -136,7 +136,7 @@
                         <option value="1">Yes</option>
                     </select> -->
 
-                    <InputError class="mt-2" :message="form.errors.yellow_banner" />
+                    <InputError class="mt-2" :message="errors?.yellow_banner" />
                 </div>
                 <div class="mt-3">
                     <InputLabel for="Show New Badge" value="Show New Badge" />
@@ -148,22 +148,22 @@
                         <option value="1">Yes</option>
                     </select> -->
 
-                    <InputError class="mt-2" :message="form.errors.new_badge" />
+                    <InputError class="mt-2" :message="errors?.new_badge" />
                 </div>
                 <div class="mt-3">
                     <InputLabel for="Label" value="Label" />
                     <TextInput id=" " type="text" class="block w-full mr-2 h-[33px] w-[80%]" v-model="form.label"
-                        placeholder="" label="" :message="form.errors.label" />
+                        placeholder="" label="" :message="errors?.label" />
                 </div>
                 <div class="mt-3">
                     <InputLabel for="Material Code" value="Material Code" />
                     <TextInput id=" " type="text" class="block w-full mr-2 h-[33px] w-[80%]"
-                        v-model="form.material_code" placeholder="" label="" :message="form.errors.material_code" />
+                        v-model="form.material_code" placeholder="" label="" :message="errors?.material_code" />
                 </div>
                 <div class="mt-3">
                     <InputLabel for="Group Name" value="Group Name" />
                     <TextInput id=" " type="text" class="block w-full mr-2 h-[33px] w-[80%]" v-model="form.group_name"
-                        placeholder="" label="" :message="form.errors.group_name" />
+                        placeholder="" label="" :message="errors?.group_name" />
                 </div>
 
                 <div class="mt-3">
@@ -172,14 +172,14 @@
                         <TextInput id=" " type="color" class="block w-full mr-2 h-[33px] w-[20%]"
                             v-model="form.bg_color" placeholder="" label="" />
                         <TextInput id=" " type="text" class="block w-full mr-2 h-[33px] w-[30%]" v-model="form.bg_color"
-                            placeholder="" label="" :message="form.errors.bg_color" />
+                            placeholder="" label="" :message="errors?.bg_color" />
                     </div>
                 </div>
                 <div class="mt-3">
                     <InputLabel for="Trade Mark Label" value="Trade Mark Label" />
                     <TextInput id=" " type="text" class="block w-full mr-2 h-[33px] w-[80%]"
                         v-model="form.trade_mark_label" placeholder="" label=""
-                        :message="form.errors.trade_mark_label" />
+                        :message="errors?.trade_mark_label" />
                 </div>
                 <div class="mt-4">
                     <InputLabel for="Featured_image" value="Featured_image" />
@@ -193,7 +193,7 @@
                             @input="
                                 form.featured_image = $event.target.files[0]
                             "/> -->
-                    <InputError class="mt-2" :message="form.errors.featured_image" />
+                    <InputError class="mt-2" :message="errors?.featured_image" />
                 </div>
                 <div class="mt-3">
                     <InputLabel for="Single Color" value="Single Color" />
@@ -204,7 +204,7 @@
                     </select> -->
                     <VueMultiselect placeholder="Select Single Color" v-model="form.single_color" :options="colors">
                     </VueMultiselect>
-                    <InputError class="mt-2" :message="form.errors.single_color" />
+                    <InputError class="mt-2" :message="errors?.single_color" />
                 </div>
                 <div class="mt-3 multiSelectContainet">
                     <InputLabel for="Multiple Color" value="Multiple Color" />
@@ -214,7 +214,7 @@
                     </VueMultiselect>
                     <!-- <ejs-multiselect class="form-control" id="multiselect" v-model="form.multi_color"
                         :dataSource="data[0].multi_color" placeholder="Select Multi Color"></ejs-multiselect>
-                    <InputError class="mt-2" :message="form.errors.multi_color" /> -->
+                    <InputError class="mt-2" :message="errors?.multi_color" /> -->
                 </div>
                 <div class="mt-3">
                     <InputLabel for="Show New Badge 2021" value="Show New Badge 2021" />
@@ -225,7 +225,7 @@
                         <option value="0">No</option>
                         <option value="1">Yes</option>
                     </select> -->
-                    <InputError class="mt-2" :message="form.errors.show_badge_2021" />
+                    <InputError class="mt-2" :message="errors?.show_badge_2021" />
                 </div>
             </div>
         </div>
@@ -244,22 +244,28 @@
 
 <script setup>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import Checkbox from "@/Components/Checkbox.vue";
-import VueMultiselect from 'vue-multiselect'
-import Button from "@/Components/Buttons/Button.vue";
-import TextInput from "@/Components/form-components/TextInput.vue";
-import InputError from "src/components/Admin-components/InputError.vue";
-import InputLabel from "@/Components/form-components/InputLabel.vue";
-// import Dropdown from "@/Components/Dropdown.vue";
-import Dropdown from "@/Components/form-components/Dropdown.vue";
-import PrimaryButton from "src/components/Admin-components/PrimaryButton.vue";
-import ImageUpload2 from "@/Components/form-components/ImageUpload2.vue";
-// import TextInput from "@/Components/TextInput.vue";
-import { Head, Link, useForm } from "@inertiajs/vue3";
-import { ref, computed } from "vue";
+import Checkbox from "@/components/Admin-components/form-components/CheckBox.vue";
+// import VueMultiselect from 'vue-multiselect'
+import Button from "@/components/Admin-components/Buttons/Button.vue";
+import TextInput from "@/components/Admin-components/form-components/TextInput.vue";
+import InputError from "@/components/Admin-components/InputError.vue";
+import InputLabel from "@/components/Admin-components/form-components/InputLabel.vue";
+import Dropdown from "@/components/Admin-components/form-components/Dropdown.vue";
+import PrimaryButton from "@/components/Admin-components/Buttons/PrimaryButton.vue";
+import ImageUpload2 from "@/components/Admin-components/form-components/ImageUpload2.vue";
+import { useRoute } from 'vue-router';
+import { ref, computed ,watch} from "vue";
 
 const parentMaterial = ref(null);
 const selectedValue = ref('');
+const route = useRoute();
+const swatchId = ref(route.params.id);
+watch(
+  () => route.params.id,
+  (newId) => {
+    swatchId.value = newId;
+  }
+);
 
 const handleFileSelected = (file) => {
     form.featured_image = file;
@@ -367,25 +373,26 @@ console.log(categorie1);
 if (props.material.multi_color) {
     var multi_color = props.material.multi_color.split(",");
 }
-const form = useForm({
-    id: props.material.id,
-    name: props.material.name,
-    slug: props.material.slug,
-    parent_material: props.material.parent_material,
-    description: props.material.description,
+const material = {};
+const form = ref({
+    id: material?.id || '',
+    name: material?.name || '',
+    slug: material?.slug  || '',
+    parent_material: material?.parent_material  || '',
+    description: material?.description  || '',
     featured_image: [],
-    material_price: props.material.price,
-    material_option: props.material.material_option,
-    yellow_banner: props.material.yellow_banner,
-    new_badge: props.material.new_badge,
-    label: props.material.label,
-    material_code: props.material.material_code,
-    group_name: props.material.group_name,
-    bg_color: props.material.bg_color,
-    trade_mark_label: props.material.trade_mark_label,
-    single_color: props.material.single_color,
-    multi_color: multi_color,
-    show_badge_2021: props.material.show_badge_2021,
+    material_price: material?.price  || '',
+    material_option: material?.material_option  || '',
+    yellow_banner: material?.yellow_banner  || '',
+    new_badge: material?.new_badge  || '',
+    label: material?.label  || '',
+    material_code: material?.material_code  || '',
+    group_name: material?.group_name  || '',
+    bg_color: material?.bg_color  || '',
+    trade_mark_label: material?.trade_mark_label  || '',
+    single_color: material?.single_color || '',
+    multi_color: material?.multi_color || '',
+    show_badge_2021: material?.show_badge_2021 || '',
 });
 
 const yellow_banner = ref("");
@@ -437,28 +444,6 @@ console.log(form.yellow_banner)
     background-color: #c1c1c1;
     color: rgb(255, 255, 255);
 }
-
-/* .multiSelectContainet .multiselect .multiselect__content-wrapper .multiselect__content .multiselect__element
- .multiselect__option--highlight
-
- {
- background-color: white;
-    color: black;
-} */
-/* .multiSelectContainet .multiselect .multiselect__content-wrapper .multiselect__content .multiselect__element
-.multiselect__option--selected
- {
- background-color: white;
-    color: black;
-}
-.multiSelectContainet .multiselect .multiselect__content-wrapper .multiselect__content .multiselect__element
- .multiselect__option--highlight ::after
-
- {
- background-color: white;
-    color: black;
-} */
-
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -471,5 +456,3 @@ input[type="number"] {
     appearance: textfield;
 }
 </style>
-<style src="vue-multiselect/dist/vue-multiselect.css"></style>
-.multiselect__option--highlight

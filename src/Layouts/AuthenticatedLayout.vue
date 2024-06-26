@@ -1,11 +1,9 @@
 <script setup>
 import { ref } from 'vue';
-import ApplicationLogo from 'src/components/Admin-components/ApplicationLogo.vue';
-import Dropdown from 'src/components/Admin-components/Dropdown.vue';
-import DropdownLink from 'src/components/Admin-components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from 'src/components/Admin-components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
+import Dropdown from '@/components/Admin-components/Dropdown.vue';
+import DropdownLink from '@/components/Admin-components/DropdownLink.vue';
+// import NavLink from '@/components/Admin-components/NavLink.vue';
+import ResponsiveNavLink from '@/components/Admin-components/ResponsiveNavLink.vue';
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -20,18 +18,19 @@ const showingNavigationDropdown = ref(false);
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                                <a href="route('dashboard')">
                                     <ApplicationLogo
                                         class="block h-9 w-auto fill-current text-gray-800"
                                     />
-                                </Link>
+                                </a>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                <!-- <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
-                                </NavLink>
+                                </NavLink> -->
+                                
                             </div>
                         </div>
 
@@ -45,7 +44,7 @@ const showingNavigationDropdown = ref(false);
                                                 type="button"
                                                 class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                {{ $page.props.auth.user.name }}
+                                                <!-- {{ $page.props.auth.user.name }} -->
 
                                                 <svg
                                                     class="ms-2 -me-0.5 h-4 w-4"
@@ -64,8 +63,8 @@ const showingNavigationDropdown = ref(false);
                                     </template>
 
                                     <template #content>
-                                        <DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>
-                                        <DropdownLink :href="route('logout')" method="post" as="button">
+                                        <DropdownLink href="route('profile.edit')"> Profile </DropdownLink>
+                                        <DropdownLink href="route('logout')" method="post" as="button">
                                             Log Out
                                         </DropdownLink>
                                     </template>
@@ -112,7 +111,7 @@ const showingNavigationDropdown = ref(false);
                     class="sm:hidden"
                 >
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                        <ResponsiveNavLink href="route('dashboard')" active="route().current('dashboard')">
                             Dashboard
                         </ResponsiveNavLink>
                     </div>
@@ -121,14 +120,16 @@ const showingNavigationDropdown = ref(false);
                     <div class="pt-4 pb-1 border-t border-gray-200">
                         <div class="px-4">
                             <div class="font-medium text-base text-gray-800">
-                                {{ $page.props.auth.user.name }}
+                                <!-- {{ $page.props.auth.user.name }} -->
                             </div>
-                            <div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
+                            <div class="font-medium text-sm text-gray-500">
+                                <!-- {{ $page.props.auth.user.email }} -->
+                            </div>
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.edit')"> Profile </ResponsiveNavLink>
-                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">
+                            <ResponsiveNavLink href="route('profile.edit')"> Profile </ResponsiveNavLink>
+                            <ResponsiveNavLink href="route('logout')" method="post" as="button">
                                 Log Out
                             </ResponsiveNavLink>
                         </div>

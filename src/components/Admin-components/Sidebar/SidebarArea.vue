@@ -1,49 +1,52 @@
-<script>    
+<script>
+import ApplicationLogo from '../ApplicationLogo.vue';
+
+    
     export default {         
         data(){
             return{
                 navData: [
                     {
                         "name": "Dashboard",
-                        "link": "dashboard"    
+                        "link": "/dashboard"    
                     },
                     {
                         "name": "Material Options",
-                        "link": "materials",
+                        "link": "/materials",
                         "subMenu": [
                             {
                             "name": "Swatches",
-                            "link": "swatches"
+                            "link": "/swatches"
                             },
                             {
                             "name": "Material",
-                            "link": "materials"
+                            "link": "/materials"
                             },
                         ],    
                     },
                     {
                         "name": "products",
-                        "link": "products"
+                        "link": "/products"
                     },
                     {
                         "name": "Swatches",
-                        "link": "swatches"
+                        "link": "/swatches"
                     },
                     {
                             "name": "Material",
-                            "link": "materials"
+                            "link": "/materials"
                     },
                     {
                             "name": "Re-orders",
-                            "link": "ReOrder"
+                            "link": "/ReOrder"
                     },
                     {
                             "name": "Navigation Order",
-                            "link": "NavigationOrder"
+                            "link": "/NavigationOrder"
                     },
                     {
                             "name": "Taxonomy Order",
-                            "link": "TaxonomyOrder"
+                            "link": "/TaxonomyOrder"
                     },
                 ],
                 currentItem:""
@@ -59,12 +62,13 @@
 </script>
 <template>
     <aside
-        class="absolute left-0 top-0 z-9999 flex h-screen w-44 flex-col overflow-y-hidden bg-bodydark1 duration-300 ease-linear lg:static lg:translate-x-0"
+        class="absolute left-0 top-0 z-[999] flex h-screen w-44 flex-col overflow-y-hidden bg-bodydark1 duration-300 ease-linear lg:static lg:translate-x-0"
     >
         <!-- SIDEBAR HEADER -->
         <div class="flex items-center justify-between lg:justify-center gap-2 px-2 mt-2">
             <a href="/admin/dashboard">
-                <img src="/images/lebello_logo.png" alt="Logo" width="80" />
+                <ApplicationLogo/>
+                <!-- <img  src="../../../../public/logo-header.png" alt="Logo" /> -->
             </a>
             <button class="block lg:hidden">
                 <svg
@@ -90,7 +94,7 @@
             <nav class="mt-3" x-data="{selected: $persist('Dashboard')}"> 
                 <ul class="mb-6 flex flex-col gap-1.5"> 
                     <li v-for="(navitem, index) in navData" :key="`item-${index}`">
-                        <a class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-white duration-300 ease-in-out hover:bg-bodydark2 hover:text-textColor1" :href="route(navitem?.link)" @click="setcurrentMenu(navitem?.name)">
+                        <router-link :to=navitem.link class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-white duration-300 ease-in-out hover:bg-bodydark2 hover:text-textColor1" @click="setcurrentMenu(navitem?.name)">
                             <svg
                                 class="fill-current"
                                 width="18"
@@ -105,13 +109,13 @@
                                 />
                             </svg>
                             <span class="text-sm">{{navitem?.name}} </span>                           
-                        </a>
+                        </router-link>
                         <div v-if="navitem?.subMenu && navitem?.subMenu?.length>0" :class="currentItem==navitem?.name?'block':'hidden group-hover:list-subitems'" >
                             <ul>
                                 <li v-for="(subItem, index) in navitem?.subMenu" :key="`sub-item-${index}`">
-                                    <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-white duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4" :href="route(subItem?.link)"> 
+                                    <router-link :to=subItem?.link class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-white duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4" > 
                                         <span class="text-sm">{{subItem?.name}} </span>
-                                    </a>
+                                    </router-link>
                                 </li>
                             </ul>
                         </div>

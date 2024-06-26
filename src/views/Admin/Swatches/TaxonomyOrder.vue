@@ -1,16 +1,15 @@
 <template>
-    <AdminLayout>
+    <div>
     <div>
         <div class="text-[23px] text-sans">Taxonomy Order    </div>
     <Dreagable v-model:list="list" parentfield="name" childField='name'  @update:list="handleListUpdate">
     </Dreagable>
     {{ sortedData }}
     </div>
-</AdminLayout>
+</div>
 </template>
 <script setup>
   import { ref } from 'vue';
-  import AdminLayout from "@/Layouts/AdminLayout.vue";
 import Dreagable from "@/components/Admin-components/Dreag-able.vue";
 const sortedData = ref([]);
 
