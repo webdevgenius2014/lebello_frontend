@@ -75,7 +75,7 @@
     try {
       if (validateForm()) {
         processing.value = true;
-        const res = await axios.post('/login',{})
+          // const res = await axios.post('/login',{})
         const user = { ...form.value }; 
         const token = 'example_token_from_server'; 
         await store.dispatch('login', { token, user });

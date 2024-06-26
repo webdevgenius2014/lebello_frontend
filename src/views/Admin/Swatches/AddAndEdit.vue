@@ -288,7 +288,7 @@
                         <div class="bg-[#f6f7f7] flex py-3">
                             <Button type=""
                                 bg_th_color="text-white bg-[#2271B1] hover:bg-[#0a4b78]"
-                                class="ml-2 text-sm ml-auto px-3 py-2">
+                                class=" text-sm ml-auto px-3 py-2">
                                     Publish
                             </Button>
                         </div>

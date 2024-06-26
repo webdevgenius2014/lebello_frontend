@@ -175,7 +175,7 @@
 
 import LinkBtn from "@/components/Admin-components/Buttons/LinkBtn.vue";
 import Button from "@/components/Admin-components/Buttons/Button.vue";
-import Dropdown from "@/components/Admin-components/form-components/Dropdown.vue";
+import Dropdown from "@/components/Admin-components/form-components/Select.vue";
 import TextInput from "@/components/Admin-components/form-components/TextInput.vue";
 import AddAndEdit from "./AddAndEdit.vue";
 import { ref, computed ,watch } from "vue";

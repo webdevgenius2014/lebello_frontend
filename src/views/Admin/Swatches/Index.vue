@@ -125,11 +125,11 @@
                 <div class="flex flex-col items-start min-h-20">
                   {{ row.title }}
                   <p v-if="hoverd === rowIndex" class="text-[12px] text-textColor2">
-                    <a :href="route('edit.swatch', row.id)"> Edit</a>
+                    <a href="route('edit.swatch', row.id)"> Edit</a>
                     <span class="mx-1">|</span>
                     <a class="text-[#b32d2e]"
                       onclick="return confirm('Are you sure you want to permanently delete?')"
-                      :href="route('delete.swatch', row.id)"
+                      href="route('delete.swatch', row.id)"
                       >Delete</a
                     >
                   </p>
@@ -250,7 +250,7 @@
 <script setup>
 // import LinkBtn from "@/Components/Admin-components/Buttons/LinkBtn.vue";
 import Button from "@/components/Admin-components/Buttons/Button.vue";
-import Dropdown from "@/components/Admin-components/form-components/Dropdown.vue";
+import Dropdown from "@/components/Admin-components/form-components/Select.vue";
 import TextInput from "@/components/Admin-components/form-components/TextInput.vue";
 // import TableComponent from "@/components/Admin-components/TableComponent.vue";
 import { ref, computed } from "vue";
