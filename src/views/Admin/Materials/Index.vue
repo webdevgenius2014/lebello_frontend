@@ -24,11 +24,8 @@
           <br />
           <div class="flex mt-5 justify-between">
             <div class="flex items-center">
-              <Dropdown
-              :options="bulkOption"
-              field="text"
-              @optionSelected="handleOptionSelected"
-            />           
+              <Select :options="bulkOption" showfield="text" valueField="value" label="select Action"
+              v-model="selectedOption" />          
                <Button @click="handleSubmit" class="px-2">Apply</Button>
             </div>
             <!-- pagination -->
@@ -158,11 +155,9 @@
             </table>
           </div>
           <div class="flex items-center mt-3">
-              <Dropdown
-              :options="bulkOption"
-              field="text"
-              @optionSelected="handleOptionSelected"
-            />           
+            <Select :options="bulkOption" showfield="text" valueField="value"  label="select Action"
+            v-model="selectedOption" /> 
+            {{  selectedOption}}      
                <Button @click="handleSubmit" class="px-2">Apply</Button>
             </div>
         </div>
@@ -175,14 +170,11 @@
 
 import LinkBtn from "@/components/Admin-components/Buttons/LinkBtn.vue";
 import Button from "@/components/Admin-components/Buttons/Button.vue";
-import Dropdown from "@/components/Admin-components/form-components/Select.vue";
+import Select from "@/components/Admin-components/form-components/Select.vue";
 import TextInput from "@/components/Admin-components/form-components/TextInput.vue";
 import AddAndEdit from "./AddAndEdit.vue";
 import { ref, computed ,watch } from "vue";
-
-// import { Head, Link, useForm } from "@inertiajs/vue3";
-
-
+import { bulkOption,tableHeaders } from "@/json/data";
 
 const props = defineProps({
   materials: {
@@ -194,27 +186,7 @@ const props = defineProps({
     default: () => [],
   }
 });
-// console.log(props.options);
-const tableHeaders = [
-  { text: "Image", width: "w-64", filter: false },
-  { text: "Name", width: "w-64", filter: true },
-  { text: "Description", width: "w-64", filter: true },
-  { text: "Slug", width: "w-64", filter: true },
-  { text: "Count", width: "w-64", filter: true },
-];
 
-const bulkOption = [
-  { text: "Bulk Action", value: "dashboard" },
-  { text: "Edit", value: "settings" },
-  { text: "Move to trash", value: "earnings" },
-];
-
-const menuItems = [
-  { text: "Dashboard", value: "dashboard" },
-  { text: "Settings", value: "settings" },
-  { text: "Earnings", value: "earnings" },
-  { text: "Sign out", value: "signout" },
-];
 const hoverd = ref(null);
 const titleFilter = ref("");
 const sortField = ref("Name");

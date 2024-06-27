@@ -12,7 +12,7 @@
   const props = defineProps({
     acceptedFormats: {
       type: Array,
-      default: () => ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx']
+      default: () => ['jpg', 'jpeg', 'png']
     }
   });
   

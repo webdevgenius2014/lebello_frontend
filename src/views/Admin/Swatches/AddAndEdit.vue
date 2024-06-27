@@ -1,13 +1,13 @@
 <template>
-    <AdminLayout>
+    <div>
         <h1 class="text-2xl text-[#1d2327]">Add New Swatches</h1>
-            <form @submit.prevent="form.post(route('store.swatches'))">
+            <form @submit.prevent="">
         <div class="grid grid-cols-12 gap-4 mt-5">
             <div class="col-span-8">
                 <!-- Add New Swatches -->
                 <div>
                     <TextInput id="title" type="text" class="block w-full text-lg  py-5 mr-2 h-[33px]"
-                        v-model="form.title" placeholder="Add Title" label="" :message="form.errors.title" />
+                        v-model="form.title" placeholder="Add Title" label="" :message="errors?.title" />
                 </div>
                 
                 <!-- Discription -->
@@ -59,7 +59,7 @@
                                 <!-- <RichEditor v-model="form.description"  v-on:update:value="updateEditorValue"/> -->
                                 <InputError
                     class="mt-2"
-                    :message="form.errors.description"
+                    :message="errors?.description"
                 />
                               <span class="text-sm">Put Material Description.</span>
 
@@ -71,7 +71,7 @@
                 <div class="mt-5">
                     <TextInput id="title" type="text" class="block w-full mr-2 h-[33px]" v-model="form.trade_mark_label"
                         placeholder="" label="Trade Mark Label
-                 " :message="form.errors.trade_mark_label" />
+                 " :message="errors?.trade_mark_label" />
                 </div>
                 <!-- material options -->
                 <div class="mt-5">
@@ -81,7 +81,7 @@
                             <div class="w-5/6">
                                 <div class="flex items-center text-gray-600 text-sm">
                                     <TextInput id=" " type="number" class="block w-[180px] mr-2 h-[33px]"
-                                        v-model="form.term_key" placeholder="" label="" :message="form.errors.term_key" />
+                                        v-model="form.term_key" placeholder="" label="" :message="errors.term_key" />
                                     <span>The material term id. This is generated from material taxonomy.
                                         Please do not make any changes here.
                                     </span>
@@ -93,7 +93,7 @@
                             <div class="w-5/6">
                                 <div class=" items-center text-gray-600 text-sm">
                                     <TextInput id=" " type="number" class="block w-[180px] mr-2 h-[33px]"
-                                    v-model="form.material_item" placeholder="" label="" :message="form.errors.material_item" />
+                                    v-model="form.material_item" placeholder="" label="" :message="errors.material_item" />
                                     
                                     <span>Put material taxonomy term id. Seperate with commas.</span>
                                 </div>
@@ -118,7 +118,7 @@
                             <div class="w-5/6">
                                 <div class=" items-center text-gray-600 text-sm">
                                     <TextInput id=" " type="text" class="block w-[180px] mr-2 h-[33px]"
-                                        v-model="form.seo_title" placeholder="" label="" :message="form.errors.seo_title" />
+                                        v-model="form.seo_title" placeholder="" label="" :message="errors.seo_title" />
                                     <span>Custom title tag.</span>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                                 <div class=" items-center text-gray-600 text-sm">
                                     <TextInput id=" " isTextarea="true" rows='4' type="text"
                                         class="block w-[180px] mr-2 h-[33px]" v-model="form.seo_description" placeholder=""
-                                        label="" :message="form.errors.seo_description" />
+                                        label="" :message="errors.seo_description" />
                                     <span>Most search engines use a maximum of 160 chars for the description.
                                     </span>
                                 </div>
@@ -141,7 +141,7 @@
                                 <div class=" items-center text-gray-600 text-sm">
                                     <TextInput id=" " isTextarea="true" rows='4' type="text"
                                         class="block w-[180px] mr-2 h-[33px]" v-model="form.meta_keywords" placeholder=""
-                                        label="" :message="form.errors.meta_keywords" />
+                                        label="" :message="errors.meta_keywords" />
                                     <span>Seperate each term with comma.</span>
                                 </div>
                             </div>
@@ -159,7 +159,7 @@
                                 <ImageUpload2 @file-selected="handleImage_Overlay" :accepted-formats="['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx']"/>
                                 <InputError
                             class="mt-2"
-                            :message="form.errors.featured_image"
+                            :message="errors.featured_image"
                         />
                                 <!-- <ImageUpload @file-selected="handleImage_Overlay" accept="image/*" :message="form.errors.featured_image"
                                  label=""
@@ -175,7 +175,7 @@
                 <Accordion header="Publish" open="false">
                     <div class="px-1 py-3">
                         <div class="flex justify-between mb-2">
-                            <LinkBtn :click="route('add.swatches')" :buttonText="'Preview'" />
+                            <LinkBtn click="route('add.swatches')" :buttonText="'Preview'" />
                             <Button @click="handleSubmit" type="submit">
                                 Save Draft
                             </Button>
@@ -212,7 +212,7 @@
                             </div>
                             <div v-if="showHidePublish.Status">
                                 <Dropdown :options="menuItems" @optionSelected="handleOptionSelected" />
-                                <LinkBtn :click="route('add.swatches')" class=" " buttonText="ok" />
+                                <LinkBtn click="route('add.swatches')" class=" " buttonText="ok" />
                                 <Button type="" @click="showHidePublish.Status = !showHidePublish.Status"
                                     class="ml-2 text-sm border-none underline">
                                     Cancel
@@ -247,7 +247,7 @@
                             <div v-if="showHidePublish.Visibility">
                                 <RadioBtn :options="options" :onChange="handleOptionChange"
                                     class="flex flex-col mb-1" />
-                                <LinkBtn :click="route('add.swatches')" class=" " :buttonText="'ok'" />
+                                <LinkBtn click="route('add.swatches')" class=" " :buttonText="'ok'" />
                                 <Button type="" @click="showHidePublish.Visibility = !showHidePublish.Visibility"
                                     class="ml-2 text-sm border-none underline">
                                     Cancel</Button>
@@ -279,7 +279,7 @@
                             </div>
                             <div v-if="showHidePublish.Publish">
                                 <Dropdown :options="menuItems" @optionSelected="handleOptionSelected" />
-                                <LinkBtn :click="route('add.swatches')" class=" " :buttonText="'ok'" />
+                                <LinkBtn click="route('add.swatches')" class=" " :buttonText="'ok'" />
                                 <Button type="" @click="showHidePublish.Publish = !showHidePublish.Publish"
                                     class="ml-2 text-sm border-none underline">Cancel</Button>
                             </div>
@@ -329,7 +329,7 @@
                     <Accordion open="false" header="Swatches Options Material">
                         <div class="my-5 px-6  h-auto ">
                             <TextInput id="title" type="text" class="block w-full mr-2 h-[33px]" v-model="form.material_teaser_text"
-                                placeholder="" label="Material text overlay" :message="form.errors.material_teaser_text" />
+                                placeholder="" label="Material text overlay" :message="errors.material_teaser_text" />
                         </div>
                     </Accordion>
                 </div>
@@ -351,7 +351,7 @@
                 /> -->
                 <InputError
                     class="mt-2"
-                    :message="form.errors.featured_image"
+                    :message="errors?.featured_image"
                 />
                         </div>
                     </Accordion>
@@ -410,24 +410,22 @@
             </div>
         </div>
         </form> 
-    </AdminLayout>
+    </div>
 </template>
 <script setup>
-import AdminLayout from "@/Layouts/AdminLayout.vue";
-import TextInput from "@/Components/form-components/TextInput.vue";
-import CheckBox from "@/Components/form-components/CheckBox.vue";
-import ImageUpload from "@/Components/form-components/ImageUpload.vue";
-import { Head, Link, useForm } from "@inertiajs/vue3";
-import Accordion from "src/components/Admin-components/Accordion.vue";
-import Button from "@/Components/Buttons/Button.vue";
-import Dropdown from "@/Components/form-components/Dropdown.vue";
-import ImageUpload2 from "@/Components/form-components/ImageUpload2.vue";
+import TextInput from '@/components/Admin-components/form-components/TextInput.vue'
+import Checkbox from '@/components/Admin-components/form-components/CheckBox.vue';
+import Accordion from "@/components/Admin-components/Accordion.vue";
+import Button from "@/components/Admin-components/Buttons/Button.vue";
+import Dropdown from "@/components/Admin-components/form-components/Select.vue";
+import ImageUpload2 from "@/components/Admin-components/form-components/ImageUpload2.vue"
 import { ref } from "vue";
-import LinkBtn from "@/Components/Buttons/LinkBtn.vue";
-import RadioBtn from "@/Components/form-components/RadioBtn.vue";
-import Tabs from 'src/components/Admin-components/Tabs.vue';
-import TinyMCE from "src/components/Admin-components/TinyMCE.vue";
+import LinkBtn from "@/components/Admin-components/Buttons/LinkBtn.vue";
+import RadioBtn from "@/components/Admin-components/form-components/RadioBtn.vue";
+import Tabs from '@/components/Admin-components/Tabs.vue';
+import TinyMCE from "@/components/Admin-components/TinyMCE.vue";
 
+const errors = ref({})
 
 const tabs = ref([
     {
@@ -482,7 +480,6 @@ const props = defineProps({
         default: {},
     },
 });
-
 const showHidePublish = ref({
     Status: false,
     Visibility: false,
@@ -537,19 +534,19 @@ const handleImage_Overlay = (file) => {
 }
 
 
-const form = useForm({
-            id:props.swatch.id,
-            title: props.swatch.title,
-            featured_image: props.swatch.featured_image,
-            trade_mark_label: props.swatch.trade_mark_label,
-            material_teaser_text: props.swatch.material_teaser_text,
-            description: props.swatch.description,
-            material_item: props.swatch.material_item,
-            term_key: props.swatch.term_key,
-            seo_title: props.swatch.seo_title,
-            seo_description: props.swatch.seo_description,
-            meta_keywords: props.swatch.meta_keywords,
-            image_overlay: props.swatch.image_overlay,
+const form = ref({
+            id:props.swatch.id ||'',
+            title: props.swatch.title ||'',
+            featured_image: props.swatch.featured_image ||'',
+            trade_mark_label: props.swatch.trade_mark_label ||'',
+            material_teaser_text: props.swatch.material_teaser_text ||'',
+            description: props.swatch.description ||'',
+            material_item: props.swatch.material_item ||'',
+            term_key: props.swatch.term_key ||'',
+            seo_title: props.swatch.seo_title ||'',
+            seo_description: props.swatch.seo_description ||'',
+            meta_keywords: props.swatch.meta_keywords ||'',
+            image_overlay: props.swatch.image_overlay ||'',
 });
 
 console.log('form ',form)
@@ -561,8 +558,6 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-/* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;

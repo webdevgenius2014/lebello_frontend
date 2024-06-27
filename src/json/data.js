@@ -31,3 +31,16 @@ export const colors = [
     { id: 2, name: 'Option 2', parent_material: 1, value: '2' },
     { id: 3, name: 'Option 3', parent_material: 1, value: '3' }
   ]
+  export const bulkOption = [
+    { text: "Bulk Action", value: "dashboard" },
+    { text: "Edit", value: "settings" },
+    { text: "Move to trash", value: "earnings" },
+  ];
+
+  export const tableHeaders = [
+    { text: "Image", width: "w-64", filter: false },
+    { text: "Name", width: "w-64", filter: true },
+    { text: "Description", width: "w-64", filter: true },
+    { text: "Slug", width: "w-64", filter: true },
+    { text: "Count", width: "w-64", filter: true },
+  ];

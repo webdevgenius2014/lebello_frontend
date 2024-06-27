@@ -35,8 +35,8 @@
 
 <script setup>
 import { ref } from "vue";
-import Accordion from "./Admin-components/Accordion.vue";
-import CheckBox from "./form-components/CheckBox.vue";
+import Accordion from "@/components/Admin-components/Accordion.vue";
+import CheckBox from "@/components/Admin-components/form-components/CheckBox.vue";
 
 const props = defineProps({
   id: String,

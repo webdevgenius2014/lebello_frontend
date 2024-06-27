@@ -1,5 +1,5 @@
 <template>
-  <select v-model="selectedOption" @change="handleChange">
+  <select v-model="selectedOption"  @change="handleChange">
     <option value="" disabled>{{ label }}</option>
     <option v-for="(option, index) in options" :key="index" :value="option[valueField]">
       <span v-if="option.parent_material === 1">&nbsp;&nbsp;&nbsp;</span>

@@ -48,7 +48,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:model']);
 
 const inputValue = ref(props.value); 
 
@@ -63,6 +63,6 @@ defineExpose({ focus: () => inputRef.value.focus() });
 
 const updateValue = (newValue) => {
   inputValue.value = newValue;
-  emit('update:modelValue', newValue); 
+  emit('update:model', newValue); 
 };
 </script>

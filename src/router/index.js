@@ -52,8 +52,18 @@ const router = createRouter({
     },
     {
       path: '/login',
-      name: 'library_and_tools',
+      name: 'login',
       component: () => import('../views/Auth/Admin-Login.vue')
+    },
+    {
+      path: '/forget-password',
+      name: 'forget-password',
+      component: () => import('../views/Auth/ForgotPassword.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/Auth/Register.vue')
     },
 
     {
@@ -80,8 +90,14 @@ const router = createRouter({
           meta: { requiresAuth: true }
         },
         {
-          path: '/swatches/:id',
+          path: '/swatches-add',
           name: 'swatches-add',
+          component:()=> import('../views/Admin/Swatches/AddAndEdit.vue'),
+          meta: { requiresAuth: true }
+        },
+        {
+          path: '/swatches/:id',
+          name: 'swatches-edit',
           component:()=> import('../views/Admin/Swatches/AddAndEdit.vue'),
           meta: { requiresAuth: true }
         },

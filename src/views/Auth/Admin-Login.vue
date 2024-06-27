@@ -1,9 +1,8 @@
 <template>
     <GuestLayout>
-      <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+      <!-- <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
         {{ status }}
-      </div>
-      
+      </div> -->
       <form @submit.prevent="handleLogin">
         <div>
           <TextInput
@@ -14,7 +13,7 @@
             v-model="form.email"
             placeholder="Email"
             :class="{ 'border-red-500': errors.email }"
-            @update:model="clearError(errors,'email')"
+            @update:model="$clearError(errors,'email')"
           />
         </div>
   
@@ -27,7 +26,7 @@
             v-model="form.password"
             placeholder="Password"
             :class="{ 'border-red-500': errors.password }"
-            @update:model="clearError(errors,'password')"
+            @update:model="$clearError(errors,'password')"
           />
         </div>
   
@@ -38,9 +37,9 @@
         </div>
   
         <div class="flex items-center justify-between mt-4">
-          <a v-if="canResetPassword" href="#" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <router-link to="/forget-password"  href="#" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Forgot your password?
-          </a>
+          </router-link>
           <Button type="submit" class="ms-4" :class="{ 'opacity-25': processing }" :disabled="processing" bg_th_color="bg-[#2271b1] text-white px-3 py-2">
             Log in
           </Button>
@@ -56,7 +55,7 @@
   import TextInput from '@/components/Admin-components/form-components/TextInput.vue';
   import Checkbox from '@/components/Admin-components/form-components/CheckBox.vue';
   import { useStore } from 'vuex';
-  import { clearError } from '@/helper/functions';
+  import LoginService from '@/services/loginServices/LoginServices';
   import { useRouter } from 'vue-router';
   import axios from '@/helper/axios';
   const errors = ref({});
@@ -75,11 +74,23 @@
     try {
       if (validateForm()) {
         processing.value = true;
-          // const res = await axios.post('/login',{})
-        const user = { ...form.value }; 
-        const token = 'example_token_from_server'; 
-        await store.dispatch('login', { token, user });
+        const user = { ...form.value };
+        const token = "token"
+        store.dispatch('login', { token, user });
         router.push('/admin');
+        // LoginService.login(user)
+        // .then(res => {
+        //   console.log('Login Response:', res.data);
+        //   store.dispatch('login', { token, payload });
+        //   router.push('/admin');
+        //   if (res.status === 200 && res?.data?.success === true) {
+        //   store.dispatch('login', { token, user });
+        //   processing.value = false;        }
+        // if (res.status === 401) {
+        //   processing.value = false;
+              
+        // }
+        // })
       }
     } catch (e) {
       console.error('Error while log in:', e);

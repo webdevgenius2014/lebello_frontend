@@ -10,11 +10,7 @@ import Dropdown from '@/components/Admin-components/Dropdown.vue';
 import DropdownLink from '@/components/Admin-components/DropdownLink.vue';
 import router from '@/router';
 // const { isSidebarOpen, toggleSidebar } = useSidebarStore()
-const logout = () => {
-  console.log("clicked is logged out")
-  store.dispatch('logout');
-  router.push('login')
-}
+
 </script>
 <!-- 1d2327 -->
 <template>
@@ -41,7 +37,7 @@ const logout = () => {
           <picture class="ml-4" >
             profile
           </picture>
-          <p class="ml-4 cursor-context-menu" @click="logout()">
+          <p class="ml-4 cursor-context-menu" @click="$logout()">
             Log Out
           </p>
         </template>
