@@ -1,6 +1,7 @@
 import './assets/main.css'
 import './assets/css/satoshi.css'
 import './assets/css/style.css'
+import "@bhplugin/vue3-datatable/dist/style.css";
 // import 'jsvectormap/dist/css/jsvectormap.min.css'
 // import 'flatpickr/dist/flatpickr.min.css'
 import { createApp } from 'vue'

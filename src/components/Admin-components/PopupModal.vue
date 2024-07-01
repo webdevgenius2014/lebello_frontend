@@ -1,61 +1,90 @@
 <template>
-    <div class="z-999999">
-        <Button class=" px-4 py-1"> <router-link to="/materials-add">Add Materials</router-link></Button>
-      <div v-if="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
-        <div class="relative w-auto my-6 mx-auto max-w-6xl">
-          <!--content-->
-          <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-            <!--header-->
-            <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-              <h3 class="text-3xl font-semibold">
-                Modal Title
-              </h3>
-              <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleModal()">
-                <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                  ×
-                </span>
-              </button>
-            </div>
-            <!--body-->
-            <div class="relative p-6 flex-auto">
-              <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-                I always felt like I could do anything. That’s the main
-                thing people are controlled by! Thoughts- their perception
-                of themselves! They're slowed down by their perception of
-                themselves. If you're taught you can’t do anything, you
-                won’t do anything. I was taught I could do everything.
-              </p>
-            </div>
-            <!--footer-->
-            <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-              <button class="text-red-500 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" v-on:click="toggleModal()">
-                Close
-              </button>
-              <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" v-on:click="toggleModal()">
-                Save Changes
-              </button>
-            </div>
-          </div>
+  <transition name="modal-fade">
+    <div v-if="isOpen" class="fixed inset-0 flex items-center justify-center py-2 px-28 bg-black bg-opacity-50 z-999999 ">
+      <div class="modal-container bg-white rounded-lg shadow-lg max-w-full  w-full h-full overflow-y-auto">
+        <div class="modal-header flex justify-between items-center mt-4 ml-3 px-4  bg-gray-200 rounded-t-lg">
+          <h3 class="text-lg font-semibold">{{ modalTitle }}</h3>
+          <button @click="closeModal" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body  overflow-y-auto">
+          <slot></slot>
         </div>
       </div>
-      <div v-if="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
     </div>
-  </template>
-  
-  <script>
-  import Button from "@/components/Admin-components/Buttons/Button.vue";
-  export default {
-    name: "large-modal",
-    data() {
-      return {
-        showModal: false
-       
-      }
-    },
-    methods: {
-      toggleModal: function(){
-        this.showModal = !this.showModal;
-      }
+  </transition>
+</template>
+
+<script>
+import { defineComponent, ref, watch } from 'vue';
+
+
+
+export default defineComponent({
+  props: {
+    modalTitle: String,
+    isOpen: {
+      type: Boolean,
+      required: true
     }
+  },
+  emits: ['update:isOpen'],
+  setup(props, { emit }) {
+    
+
+    watch(() => props.modalTitle, (newVal) => {
+      title.value = newVal;
+    });
+
+    const closeModal = () => {
+      emit('update:isOpen', false);
+    };
+
+    return {
+      
+      closeModal
+    };
   }
-  </script>
+});
+</script>
+
+<style scoped>
+.modal-container {
+  width: 100%;
+}
+
+.modal-header {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.modal-body {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #cec6c6; 
+  border-radius : 20px; 
+
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius : 20px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+</style>
