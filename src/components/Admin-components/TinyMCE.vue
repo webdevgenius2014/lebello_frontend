@@ -2,7 +2,7 @@
 import Editor from '@tinymce/tinymce-vue'
 import { ref } from "vue";
 
-const key = import.meta.env.TINY_MCE
+const key = import.meta.env.VUE_APP_TINY_MCE
 console.log("key",key)
 const model = defineModel({
     type: String,
@@ -15,7 +15,7 @@ const content = ref('')
 <template>
   <main id="sample">
     <Editor
-      :api-key='fowfxcasisk39tpnmykuzkpek6kmuj7hxeywh8hof0v1xm4z'
+      :api-key='key'
       :init="{
         plugins: 'lists link image table code help wordcount'
       }"

@@ -1,89 +1,66 @@
-<script setup>
-// import { useSidebarStore } from '@/stores/sidebar'
-// import DarkModeSwitcher from './DarkModeSwitcher.vue'
-// import DropdownMessage from './DropdownMessage.vue'
-// import DropdownNotification from './DropdownNotification.vue'
-// import DropdownUser from './DropdownUser.vue'
-import store from '@/store';
+<script setup lang="ts">
+import { useSidebarStore } from '@/stores/sidebar'
+import DarkModeSwitcher from './DarkModeSwitcher.vue'
+import DropdownMessage from './DropdownMessage.vue'
+import DropdownNotification from './DropdownNotification.vue'
+import DropdownUser from './DropdownUser.vue'
 
-import Dropdown from '@/components/Admin-components/Dropdown.vue';
-import DropdownLink from '@/components/Admin-components/DropdownLink.vue';
-import router from '@/router';
-// const { isSidebarOpen, toggleSidebar } = useSidebarStore()
-
+const { toggleSidebar } = useSidebarStore()
+const sidebarStore = useSidebarStore()
 </script>
-<!-- 1d2327 -->
+
 <template>
   <header
-    class="sticky top-0 bg-[#1d2327] z-[500] flex w-full bg-primary drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
-
-    <div class='absolute  top-0 right-0'>
-      <Dropdown width="48" align="right">
-        <template #trigger>
-          <span class="inline-flex rounded-md">
-            <button type="button"
-              class="flex items-center px-3 m-auto text-sm leading-4 font-medium  text-white bg-[#1d2327]  transition ease-in-out duration-150">
-              <!-- {{ $page.props.auth.user.name }} -->
-              <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                fill="currentColor">
-                <path fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd" />
-              </svg>
-            </button>
-          </span>
-        </template>
-        <template #content>
-          <picture class="ml-4" >
-            profile
-          </picture>
-          <p class="ml-4 cursor-context-menu" @click="$logout()">
-            Log Out
-          </p>
-        </template>
-      </Dropdown>
-    </div>
+    class="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none"
+  >
     <div class="flex flex-grow items-center justify-between py-4 px-4 shadow-2 md:px-6 2xl:px-11">
       <div class="flex items-center gap-2 sm:gap-4 lg:hidden">
         <!-- Hamburger Toggle BTN -->
         <button
-          class="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden">
+          class="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden"
+          @click="
+            () => {
+              console.log('Toggling Sidebar')
+              toggleSidebar()
+            }
+          "
+        >
           <span class="relative block h-5.5 w-5.5 cursor-pointer">
-            <span class="du-block absolute right-0 h-full w-full">
-              <!-- <span
+            <span class="block absolute right-0 h-full w-full">
+              <span
                 class="relative top-0 left-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-[0] duration-200 ease-in-out dark:bg-white"
-                :class="{ '!w-full delay-300': !isSidebarOpen }"
-              ></span> -->
-              <!-- <span
+                :class="{ '!w-full delay-300': !sidebarStore.isSidebarOpen }"
+              ></span>
+              <span
                 class="relative top-0 left-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-150 duration-200 ease-in-out dark:bg-white"
-                :class="{ '!w-full delay-400': !isSidebarOpen }"
+                :class="{ '!w-full delay-400': !sidebarStore.isSidebarOpen }"
               ></span>
               <span
                 class="relative top-0 left-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-200 duration-200 ease-in-out dark:bg-white"
-                :class="{ '!w-full delay-500': !isSidebarOpen }"
+                :class="{ '!w-full delay-500': !sidebarStore.isSidebarOpen }"
               ></span>
             </span>
-            <span class="du-block absolute right-0 h-full w-full rotate-45">
+            <span class="block absolute right-0 h-full w-full rotate-45">
               <span
                 class="absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black delay-300 duration-200 ease-in-out dark:bg-white"
-                :class="{ '!h-0 delay-[0]': !isSidebarOpen }"
+                :class="{ '!h-0 delay-[0]': !sidebarStore.isSidebarOpen }"
               ></span>
               <span
                 class="delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black duration-200 ease-in-out dark:bg-white"
-                :class="{ '!h-0 dealy-200': !isSidebarOpen }"
-              ></span> -->
+                :class="{ '!h-0 delay-200': !sidebarStore.isSidebarOpen }"
+              ></span>
             </span>
           </span>
         </button>
         <!-- Hamburger Toggle BTN -->
-        <!-- <router-link class="block flex-shrink-0 lg:hidden" to="/"> -->
-        <!-- <img src="@/assets/images/logo/logo-icon.svg" alt="Logo" /> -->
-        <!-- </router-link> -->
+        <router-link class="block flex-shrink-0 lg:hidden" to="/">
+          <img src="@/assets/images/logo/logo-icon.svg" alt="Logo" />
+        </router-link>
       </div>
       <div class="hidden sm:block">
         <form action="https://formbold.com/s/unique_form_id" method="POST">
-          <div class="relative">
-            <!-- <button class="absolute top-1/2 left-0 -translate-y-1/2">
+          <!-- <div class="relative">
+            <button class="absolute top-1/2 left-0 -translate-y-1/2">
               <svg
                 class="fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary"
                 width="20"
@@ -105,20 +82,19 @@ import router from '@/router';
                   fill=""
                 />
               </svg>
-            </button> -->
+            </button>
 
-            <!-- <input
+            <input
               type="text"
               placeholder="Type to search..."
               class="w-full xl:w-125 bg-transparent pr-4 pl-9 focus:outline-none"
-            /> -->
-          </div>
+            />
+          </div> -->
         </form>
       </div>
 
       <div class="flex items-center gap-3 2xsm:gap-7">
         <ul class="flex items-center gap-2 2xsm:gap-4">
-
           <li>
             <!-- Dark Mode Toggler -->
             <!-- <DarkModeSwitcher /> -->
@@ -135,11 +111,9 @@ import router from '@/router';
         </ul>
 
         <!-- User Area -->
-        <!-- <DropdownUser /> -->
+        <DropdownUser />
         <!-- User Area -->
       </div>
-
-
     </div>
   </header>
 </template>

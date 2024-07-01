@@ -1,7 +1,9 @@
 <template>
     <div>
         <h1 class="text-2xl text-[#1d2327]">Add New Swatches</h1>
-            <form @submit.prevent="">
+       
+        <form @submit.prevent="">
+
         <div class="grid grid-cols-12 gap-4 mt-5">
             <div class="col-span-8">
                 <!-- Add New Swatches -->
@@ -413,6 +415,7 @@
     </div>
 </template>
 <script setup>
+import DefaultCard from '@/components/Admin-components/DefaultCard.vue'
 import TextInput from '@/components/Admin-components/form-components/TextInput.vue'
 import Checkbox from '@/components/Admin-components/form-components/CheckBox.vue';
 import Accordion from "@/components/Admin-components/Accordion.vue";

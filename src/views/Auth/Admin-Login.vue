@@ -57,9 +57,8 @@
   import { useStore } from 'vuex';
   import LoginService from '@/services/loginServices/LoginServices';
   import { useRouter } from 'vue-router';
-  import axios from '@/helper/axios';
-  const errors = ref({});
-  const processing = ref(false);
+
+  
   
   const form = ref({
     email: '',

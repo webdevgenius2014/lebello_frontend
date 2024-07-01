@@ -1,5 +1,152 @@
 <template>
-    <form @submit.prevent="handleSubmit" class="max-w-[800px]">
+      <DefaultCard cardTitle="Contact Form">
+          <form action="#">
+            <div class="p-6.5">
+              <div class="mb-4.5 flex flex-col gap-6 xl:flex-row">
+               
+               
+                    <InputLabel for="Name" value="Name" />
+                    <TextInput type="text" class="block mr-2 h-[33px] w-[80%]"
+                        :class="{ 'border-red-500': errors.name }" placeholder="" v-model="form.name"
+                        :errMessage="errors.name" @update:model="clearError(errors, 'name')" />
+                    <p class="text-sm text-[#646970] text-[11.5px]">
+                        The name is how it appears on your site.
+                    </p>
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Slug" value="Slug" />
+                    <TextInput type="text" class="block mr-2 h-[33px] w-[80%]"
+                        :class="{ 'border-red-500': errors.slug }" placeholder="" v-model="form.slug"
+                        :errMessage="errors.slug" @update:model="clearError(errors, 'slug')" />
+                    <p class="text-sm text-[#646970] text-[11.5px]">
+                        The “slug” is the URL-friendly version of the name. It is usually all lowercase and
+                        contains only letters, numbers, and hyphens.
+                    </p>
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Parent Material" value="Parent Material" />
+                    <Select :options="parentMaterial" showfield="name" valueField="value" label="Select an option"
+                        v-model="form.parent_material" />
+                    <p class="text-sm text-[#646970] text-[11.5px]">
+                        Assign a parent term to create a hierarchy. The term Jazz, for example, would be the
+                        parent of Bebop and Big Band.
+                    </p>
+                    <p>Selected Value: {{ form.parent_material }}</p>
+                    <InputError class="mt-2" :message="errors?.parent_material" />
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Description" value="Description" />
+                    <TextInput type="text" class="block mr-2 h-[33px] w-[80%]"
+                        :class="{ 'border-red-500': errors.description }" placeholder="" :isTextarea="true" :rows="4"
+                        v-model="form.description" :errMessage="errors.description"
+                        @update:model="clearError(errors, 'description')" />
+                    <p class="text-sm text-[#646970] text-[11.5px]">
+                        The description is not prominent by default; however, some themes may show it.
+                    </p>
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Material Price" value="Material Price" />
+                    <TextInput type="text" class="block mr-2 h-[33px] w-[80%]"
+                        :class="{ 'border-red-500': errors.material_price }" placeholder=""
+                        v-model="form.material_price" :errMessage="errors.material_price"
+                        @update:model="clearError(errors, 'material_price')" />
+                    <p class="text-sm text-[#646970] text-[11.5px]">
+                        The “slug” is the URL-friendly version of the name. It is usually all lowercase and
+                        contains only letters, numbers, and hyphens.
+                    </p>
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Display in Material Options" value="Display in Material Options" />
+                    <Select :options="trueFalse" showfield="name" valueField="value" label="Select an option"
+                        v-model="form.material_option" />
+                    <InputError class="mt-2" :message="errors?.material_option" />
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Yellow Banner Display On Material Images"
+                        value="Yellow Banner Display On Material Images" />
+                    <Select :options="trueFalse" showfield="name" valueField="value" label="Select an option"
+                        v-model="form.yellow_banner" />
+
+                    <InputError class="mt-2" :message="errors?.yellow_banner" />
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Show New Badge" value="Show New Badge" />
+                    <Select :options="trueFalse" showfield="name" valueField="value" label="Select an option"
+                        v-model="form.new_badge" />
+                    <InputError class="mt-2" :message="errors?.new_badge" />
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Label" value="Label" />
+                    <TextInput type="text" class="block mr-2 h-[33px] w-[80%]"
+                        :class="{ 'border-red-500': errors.label }" placeholder="" v-model="form.label"
+                        :errMessage="errors.label" @update:model="clearError(errors, 'label')" />
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Material Code" value="Material Code" />
+                    <TextInput type="text" class="block mr-2 h-[33px] w-[80%]"
+                        :class="{ 'border-red-500': errors.material_code }" placeholder="" v-model="form.material_code"
+                        :errMessage="errors.material_code" @update:model="clearError(errors, 'material_code')" />
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Group Name" value="Group Name" />
+                    <TextInput type="text" class="block mr-2 h-[33px] w-[80%]"
+                        :class="{ 'border-red-500': errors.group_name }" placeholder="" v-model="form.group_name"
+                        :errMessage="errors.group_name" @update:model="clearError(errors, 'group_name')" />
+                </div>
+
+                <div class="mt-3">
+                    <InputLabel for="Label Background Color" value="Label Background Color" />
+                    <div class="flex">
+                        <TextInput type="color" class="block mr-2 h-[33px] w-[20%]"
+                            :class="{ 'border-red-500': errors.bg_color }" placeholder="" v-model="form.bg_color"
+                            :errMessage="errors.bg_color" @update:model="clearError(errors, 'bg_color')" />
+
+                        <TextInput type="text" class="block mr-2 h-[33px] w-[30%]"
+                            :class="{ 'border-red-500': errors.bg_color }" placeholder="" v-model="form.bg_color"
+                            @update:model="clearError(errors, 'bg_color')" />
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Trade Mark Label" value="Trade Mark Label" />
+                    <TextInput type="text" class="block mr-2 h-[33px] w-[80%]"
+                        :class="{ 'border-red-500': errors.trade_mark_label }" placeholder=""
+                        v-model="form.trade_mark_label" :errMessage="errors.trade_mark_label"
+                        @update:model="clearError(errors, 'trade_mark_label')" />
+                </div>
+                <div class="mt-4">
+                    <InputLabel for="Featured_image" value="Featured_image" />
+                    <ImageUpload2 @file-selected="form.featured_image = $event"
+                        :accepted-formats="['jpg', 'jpeg', 'png']" />
+                    <InputError class="mt-2" :message="errors?.featured_image" />
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Single Color" value="Single Color" />
+                    <Select :options="colors" showfield="name" valueField="value" label="Select an option"
+                        v-model="form.single_color" />
+                    <InputError class="mt-2" :message="errors.single_color" />
+                </div>
+                <div class="mt-3 multiSelectContainet">
+                    <InputLabel for="Multiple Color" value="Multiple Color" />
+                    <MultiSelect v-model="form.multi_color" :options="colors" placeHolder="Select multiple color" />
+                    <InputError class="mt-2" :message="errors?.multi_color" />
+                </div>
+                <div class="mt-3">
+                    <InputLabel for="Show New Badge 2021" value="Show New Badge 2021" />
+                    <Select :options="trueFalse" showfield="name" valueField="value" label="Select an option"
+                        v-model="form.show_badge_2021" />
+                    <InputError class="mt-2" :message="errors?.show_badge_2021" />
+                </div>
+              <button
+                class="flex mt-5 w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
+              >
+                Send Message
+              </button>
+            </div>
+            
+          </form>
+        </DefaultCard>
+    <form @submit.prevent="handleSubmit" >
+      
         <div class="grid grid-cols-1 mr-5">
             <div>
                 <div>
@@ -143,6 +290,7 @@
 </template>
 
 <script setup>
+import DefaultCard from '@/components/Admin-components/DefaultCard.vue'
 import MultiSelect from '@/components/Admin-components/form-components/MultiSelect.vue'
 import Button from '@/components/Admin-components/Buttons/Button.vue'
 import TextInput from '@/components/Admin-components/form-components/TextInput.vue'

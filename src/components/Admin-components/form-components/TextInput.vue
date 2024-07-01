@@ -1,20 +1,25 @@
 <template>
-  <label v-if="label" class="block font-medium text-sm text-gray-700 mb-1 ml-1">
-    {{ label }}
-  </label>
-
-  <div v-if="isTextarea" class="space-y-3">
+  <label v-if="label" class="mb-2.5 block font-medium text-black dark:text-white">{{ label }}</label>
+  <div v-if="isTextarea" class="mb-4">
     <textarea
       class="py-3 px-4 block w-full border-gray-300 focus:border-none focus:ring-indigo-800 rounded-md shadow-sm"
-      :rows="rows"
-      :placeholder="placeholder"
-      v-model="inputValue"
-      ref="inputRef"
-      @input="updateValue($event.target.value)"
-    ></textarea>
+      :rows="rows" :placeholder="placeholder" v-model="inputValue" ref="inputRef"
+      @input="updateValue($event.target.value)"></textarea>
   </div>
 
-  <input
+  <div v-else>
+    <div class="relative">
+      <input
+        class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary text-black dark:text-white"
+        :placeholder="placeholder" v-model="inputValue" ref="inputRef" v-bind="$attrs"
+        @input="updateValue($event.target.value)" />
+
+      <span class="absolute right-4 top-4">
+        <slot></slot>
+      </span>
+    </div>
+  </div>
+  <!-- <input
     v-else
     class="border-gray-300 w-full focus:border-none focus:ring-indigo-800 rounded-md shadow-sm"
     :placeholder="placeholder"
@@ -22,10 +27,9 @@
     ref="inputRef"
     v-bind="$attrs"
     @input="updateValue($event.target.value)"
-  />
-
+  /> -->
   <div v-show="errMessage">
-    <p class="text-sm text-red-600">
+    <p class="text-sm text-red-600 ">
       {{ errMessage }}
     </p>
   </div>
@@ -50,7 +54,7 @@ const props = defineProps({
 
 const emit = defineEmits(['update:model']);
 
-const inputValue = ref(props.value); 
+const inputValue = ref(props.value);
 
 const inputRef = ref(null);
 onMounted(() => {
@@ -63,6 +67,6 @@ defineExpose({ focus: () => inputRef.value.focus() });
 
 const updateValue = (newValue) => {
   inputValue.value = newValue;
-  emit('update:model', newValue); 
+  emit('update:model', newValue);
 };
 </script>

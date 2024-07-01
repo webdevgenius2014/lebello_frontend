@@ -53,7 +53,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/Auth/Admin-Login.vue')
+      component: () => import('../views/Auth/SigninView.vue')
     },
     {
       path: '/forget-password',
@@ -144,9 +144,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const token = store.getters.token
-  const user = store.getters.user
-  console.log('token', store.getters?.token)
-  if (to.meta.requiresAuth && !isAuthenticated(user.email, user.password)) {
+  if (to.meta.requiresAuth && !isAuthenticated(token)) {
     next('/login')
   } else {
     next()

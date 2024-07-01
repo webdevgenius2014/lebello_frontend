@@ -1,8 +1,16 @@
 <template>
-  <Head>
+
+<TableThree :isAction="true"  :tableHeaders="tableHeaders" label="Material Options"
+        :tableData='materialsData'
+      >
+      <Button class=" px-4 py-1"> <router-link to="/materials-add">Add Swatches</router-link></Button>
+        
+      <PopupModal :showModal='true' ></PopupModal>
+      </TableThree>
+  <!-- <Head>
     <title>Matireal</title>
-  </Head>
-    <div>
+  </Head> -->
+    <!-- <div>
       <h1 class="mr-3 text-[23px] text-[#1d2327] mb-7">Materials</h1>
       <div class="grid grid-cols-12">
         <div class="col-span-4 ...">
@@ -28,7 +36,6 @@
               v-model="selectedOption" />          
                <Button @click="handleSubmit" class="px-2">Apply</Button>
             </div>
-            <!-- pagination -->
           </div>
           <div class="mt-2">
             <table class="w-full border border-[#c3c4c7] text-left p-4 bg-white">
@@ -88,7 +95,6 @@
                       <img width="80%" height="80%" :src="`/${row.featured_image}`" />
                     </div>
                     <div v-else class="flex flex-col items-start min-h-24 pt-2" >
-                      <!-- <img width="80%" height="80%" src="@/public/materials/default.png" /> -->
                     </div>
                   </td>
                   <td class="text-textColor2" >
@@ -163,11 +169,13 @@
         </div>
       </div>
       
-    </div>
+    </div> -->
   </template>
   
   <script setup>
-
+  import PopupModal from '@/components/Admin-components/PopupModal.vue'
+import {materialsData,} from '@/json/data.js'
+import TableThree from "@/components/template-components/Tables/TableTwo.vue";
 import LinkBtn from "@/components/Admin-components/Buttons/LinkBtn.vue";
 import Button from "@/components/Admin-components/Buttons/Button.vue";
 import Select from "@/components/Admin-components/form-components/Select.vue";

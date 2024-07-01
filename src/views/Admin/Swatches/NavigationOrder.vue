@@ -4,7 +4,7 @@
     <div class="text-[23px] text-sans text-[#3c434a]">Rearrange Postion of Right Navigation	    </div>
   <Dreagable v-model:list="list" @update:list="handleListUpdate" parentfield="navName"  Classes="mt-3 border-[#ccc]">
   </Dreagable>
-  <Button type="" bg_th_color=" mt-5 text-white bg-[#2271B1] hover:bg-[#0a4b78]" class="ml-2 text-sm ml-auto px-3 py-1">
+  <Button type="" bg_th_color=" mt-5 text-white bg-[#2271B1] hover:bg-[#0a4b78]" class="text-sm ml-auto px-3 py-1">
         Save
   </Button>
   </div>

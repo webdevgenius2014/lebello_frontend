@@ -8,8 +8,8 @@ class LoginService {
   login(payload) {
     return instance.post(ApiConfig.login, payload)
   }
-  logout() {
-    return instance.post(ApiConfig.logout)
+  logout(payload) {
+    return instance.post(ApiConfig.logout , payload)
   }
   forgetpassword(payload) {
     return instance.post(ApiConfig.logout , payload)

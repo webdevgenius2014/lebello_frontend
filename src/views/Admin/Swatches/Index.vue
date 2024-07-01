@@ -1,6 +1,12 @@
 <template>
   <AdminLayout>
-    <div class="px-3">
+      <TableThree :isAction="true"  :tableHeaders="tableHeaders" label="Material Options"
+        :tableData='swatches'
+      >
+      <Button class=" px-4 py-1"> <router-link to="/swatches-add">Add Swatches</router-link></Button>
+
+      </TableThree>
+    <!-- <div class="px-3">
       <div class="flex mb-1">
         <h1 class="mr-3 text-[23px] text-[#1d2327]">Material Options</h1>
         <span>
@@ -196,10 +202,7 @@
           </thead>
         </table>
       </div>
-      <!-- <div class="mt-2">  
-        <TableComponent :headers="tableHeaders" :data="tableData" :selectable="true" >
-        </TableComponent>
-      </div> -->
+      
       <div class="flex items-center mr-5  mt-3">
         <Dropdown
           :options="bulkOption"
@@ -208,53 +211,20 @@
         />
         <Button @click="handleSubmit" class="px-2"> Apply </Button>
       </div>
-    </div>
+    </div> -->
 
-    <!-- <table class="min-w-full">
-            <thead>
-                <tr>
-                    <th scope="col">S no.</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Thumbs</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody class="bg-white text-center">
-                <tr v-for="(swatch, key) in swatches">
-                    <td scope="col">{{ key + 1 }}</td>
-                    <td scope="col">{{ swatch.title }}</td>
-                    <td scope="col">{{ swatch.created_at }}</td>
-                    <td scope="col">
-                        <img
-                            width="20%"
-                            height="20%"
-                            :src="`/${swatch.featured_image}`"
-                        />
-                    </td>
-                    <td scope="col">
-                        <a :href="route('edit.swatch', swatch.id)"> Edit</a>
-                        <a
-                            onclick="return confirm('Are you sure you want to delete?')"
-                            :href="route('delete.swatch', swatch.id)"
-                        >
-                            Delete</a
-                        >
-                    </td>
-                </tr>
-            </tbody>
-        </table> -->
   </AdminLayout>
 </template>
 
 <script setup>
+import {swatches} from '@/json/data.js'
+import TableThree from "@/components/template-components/Tables/TableTwo.vue";
 // import LinkBtn from "@/Components/Admin-components/Buttons/LinkBtn.vue";
 import Button from "@/components/Admin-components/Buttons/Button.vue";
 import Dropdown from "@/components/Admin-components/form-components/Select.vue";
 import TextInput from "@/components/Admin-components/form-components/TextInput.vue";
 // import TableComponent from "@/components/Admin-components/TableComponent.vue";
 import { ref, computed } from "vue";
-
 const username = ref("");
 
 const bulkOption = [
@@ -262,17 +232,13 @@ const bulkOption = [
   { text: "Edit", value: "settings" },
   { text: "Move to trash", value: "earnings" },
 ];
-const menuItems = [
-  { text: "All Dates", v9alue: "dashboard" },
-  { text: "May 2023", v9alue: "dashboard" },
-    { text: "July 2016", value: "settings" },
-    { text: "March 2014", value: "signout" },
-];
+
 
 const tableHeaders = [
-  { text: "Title", width: "w-64", filter: true },
-  { text: "Date", width: "w-[20px]", filter: true },
-  { text: "Thumbs", width: "w-64", filter: false },
+  { text: "Thumbs", },
+  { text: "Title",   },
+  { text: "Date",  },
+  { text: "actions", },
 ];
 const tableData = [
   {
